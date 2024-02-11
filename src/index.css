@@ -6,8 +6,10 @@ body,
 .app,
 .content {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+  overflow-x: hidden !important;
 }
 
 .app {

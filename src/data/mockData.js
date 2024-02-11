@@ -1281,3 +1281,65 @@ export const mockGeographyData = [
     value: 171135,
   },
 ];
+
+
+export const mockAreaData = {
+  regCode: {
+    options: [{ label: 'Provincial Coordinator', value: 'provCode' }, { value: 'citymunCode', label: "City/Municipality Coordinator" }, { value: 'brgyCode', label: "Barangay Coordinator" }],
+  },
+  provCode: {
+    options: [{ value: 'citymunCode', label: "City/Municipality Coordinator" }, { value: 'brgyCode', label: "Barangay Coordinator" }],
+  },
+  citymunCode: {
+    options: [{ value: 'brgyCode', label: "Barangay Coordinator" }]
+  },
+  brgyCode: {
+    options: []
+  },
+}
+
+export const SuffixData = [
+  {
+    value: 'jr',
+    label: 'Jr.'
+  },
+  {
+    value: 'sr',
+    label: 'Sr.'
+  },
+  {
+    value: 'sr2',
+    label: 'Sr. II'
+  }
+]
+
+export const GenderData = [
+  {
+    value: 'male',
+    label: 'Male'
+  },
+  {
+    value: 'female',
+    label: 'Female'
+  }
+]
+
+
+export const CivilStatusData = [
+  {
+    value: 'single',
+    label: 'Single'
+  },
+  {
+    value: 'married',
+    label: 'Married'
+  },
+  {
+    value: 'widowed',
+    label: "Widowed"
+  },
+  {
+    value: 'separated',
+    label: "Legally Separated"
+  }
+]

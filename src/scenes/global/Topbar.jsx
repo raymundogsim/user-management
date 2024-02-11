@@ -1,11 +1,10 @@
-import {  Box, IconButton, Toolbar, Typography, useTheme,styled, Divider } from "@mui/material";
-import { useContext, useState } from "react";
+import {  Box, IconButton, Toolbar, Typography, useTheme,styled, Divider, useMediaQuery } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -20,16 +19,20 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
+import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 275;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
-    padding: theme.spacing(3),
+    // padding: theme.spacing(3),
+    marginTop: theme.spacing(5),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -76,9 +79,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const Topbar = (props) => {
   const theme = useTheme();
+  const navigation = useNavigate()
+  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const {  profile } = useSelector(({auth}) => auth)
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -88,29 +94,53 @@ const Topbar = (props) => {
     setOpen(false);
   };
   
+  useEffect(() => {
+    if(isNonMobile){
+      setOpen(true)
+    } else {
+      setOpen(false)
+    }
+  
+  }, [isNonMobile])
+
+  useEffect(() => {
+      setOpen(profile ? true : false)
+    }, [profile])
+    
+
+console.log(profile, 'PROFILE')
   
   return (
   <div>
       <Box
         display="flex"
-        backgroundColor={colors.primary[400]}
+        // backgroundColor={colors.primary[400]}
         borderRadius="3px"
       >
-          <AppBar position="fixed" open={open}>
+          <AppBar 
+          sx={{
+          backgroundColor: colors.primary[400]
+          }}
+          position="fixed" open={open}>
         <Toolbar>
           <IconButton
+            disabled={!profile ? true : false}
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <MenuIcon />
+            <MenuIcon
+              sx={{color: colors.grey[400]}}
+            />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" flexGrow={1}>
+          <Typography
+            color={colors.grey[100]}
+          variant="h6" noWrap component="div" flexGrow={1}>
            DIS3CT
           </Typography>
-     {/*      <Box
+     {/* <Box
         display="flex"
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
@@ -120,8 +150,8 @@ const Topbar = (props) => {
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
-      </Box> */}
-      
+      </Box> 
+       */}
       
       {/* ICONS */}
       <Box display="flex">
@@ -132,62 +162,50 @@ const Topbar = (props) => {
             <LightModeOutlinedIcon />
           )}
         </IconButton>
-        <IconButton>
+        {/* <IconButton>
           <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
+        </IconButton> */}
+      {/*   <IconButton>
           <SettingsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <PersonOutlinedIcon />
-        </IconButton>
+        </IconButton> */}
+         <IconButton
+          onClick={() => navigation('/dashboard/profile')}
+         >
+          <PersonOutlinedIcon
+          sx={{
+          color: !profile && colors.greenAccent[500]
+          }}
+          />
+        </IconButton> 
       </Box>
         </Toolbar>
       </AppBar>
       <Drawer
         sx={{
           width: drawerWidth,
+          overflowX: 'hidden',
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
           },
+          
         }}
         variant="persistent"
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader
+          sx={{
+            backgroundColor: colors.primary[400]
+          }}
+        >
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Sidebar />
       </Drawer>
       <Main open={open}>
         {props.children}

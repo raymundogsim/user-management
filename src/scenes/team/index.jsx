@@ -6,8 +6,13 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "features/data/dataApi";
 
 const Team = () => {
+  const dispatch = useDispatch();
+  const {users } = useSelector(({data}) => data)
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
@@ -31,34 +36,31 @@ const Team = () => {
       flex: 1,
     },
     {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
       field: "accessLevel",
+      headerAlign: "center",
       headerName: "Access Level",
       flex: 1,
-      renderCell: ({ row: { access } }) => {
+      renderCell: ({ row: { access }, row }) => {
+      console.log(access, 'accesss', row)
         return (
           <Box
-            width="60%"
+            width="50%"
             m="0 auto"
             p="5px"
             display="flex"
             justifyContent="center"
             backgroundColor={
-              access === "admin"
+              access === "Regional"
                 ? colors.greenAccent[600]
-                : access === "manager"
+                : access === "Provincial"
                 ? colors.greenAccent[700]
                 : colors.greenAccent[700]
             }
             borderRadius="4px"
           >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
+            {access === "Regional" && <AdminPanelSettingsOutlinedIcon />}
+            {access === "Provincial" && <SecurityOutlinedIcon />}
+            {access === "Barangay" && <LockOpenOutlinedIcon />}
             <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
               {access}
             </Typography>
@@ -68,8 +70,28 @@ const Team = () => {
     },
   ];
 
+  const handleGetAllUsers = async () => {
+          dispatch(getAllUsers())
+          .then(res => {
+            console.log(res, 'USERS RES')
+          })
+
+  }
+
+  
+  useEffect(() => {
+    handleGetAllUsers()
+  }, [])
+
+
+
+
   return (
-    <Box m="20px">
+    <Box 
+    sx={{pt: 3, m: '20px', overflowY: 'hidden' }}
+  
+    >
+    
       <Header title="TEAM" subtitle="Managing the Team Members" />
       <Box
         m="40px 0 0 0"
@@ -100,7 +122,7 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid checkboxSelection rows={users } columns={columns} />
       </Box>
     </Box>
   );
