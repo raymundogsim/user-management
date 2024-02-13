@@ -1,0 +1,1 @@
+export const api_url = 'https://dis3ct.bugtec.online/api'
