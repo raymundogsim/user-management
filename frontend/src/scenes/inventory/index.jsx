@@ -8,10 +8,10 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import { useEffect } from "react";
-import { getInventory } from "features/data/dataApi";
+import { getInventory } from "../../features/data/dataApi";
 import { useDispatch, useSelector } from "react-redux";
-import { inventoryRecordData } from "data/mockData";
-import { api_url } from "features/config";
+import { inventoryRecordData } from "../../data/mockData";
+import { api_url } from "../../features/config";
 import axios from "axios";
 
 
@@ -167,7 +167,7 @@ const Inventory = () => {
       >
         <DataGrid
           checkboxSelection
-          rows={inventory}
+          rows={inventoryRecordData}
           columns={columns}
           components={{ Toolbar: CustomToolbar }}
         />

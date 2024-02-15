@@ -17,8 +17,8 @@ import {  IconButton, useTheme } from "@mui/material";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from 'features/auth/authApi';
-import SetupDialog from 'components/SetupDialog';
+import { login } from '../../features/auth/authApi';
+import SetupDialog from '../../components/SetupDialog';
 
 function Copyright(props) {
   return (

@@ -6,11 +6,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { ColorModeContext, tokens } from "theme";
+import { ColorModeContext, tokens } from "../theme";
 import {   Typography, useTheme } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
-import { verifyCode } from 'features/auth/authApi';
-import { signup } from 'features/auth/authApi';
+import { verifyCode } from '../features/auth/authApi';
+import { signup } from '../features/auth/authApi';
 
 export default function SetupDialog({open, handleClose}) {
     const dispatch = useDispatch()

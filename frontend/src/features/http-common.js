@@ -1,5 +1,5 @@
 import axios from "axios";
-import { api_url } from "features/config";
+import { api_url } from "./features/config";
 
 
 export default axios.create({

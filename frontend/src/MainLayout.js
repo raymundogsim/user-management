@@ -9,10 +9,10 @@ import UserForm from "./scenes/form/UserForm";
 import InventoryForm from "./scenes/form/InventoryForm";
 import FAQ from "./scenes/faq";
 import Calendar from "./scenes/calendar/calendar";
-import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
-import { getAuthUser } from "features/auth/authApi";
-import ProfileForm from "scenes/form/ProfileForm";
+import { getAuthUser } from "./features/auth/authApi";
+import ProfileForm from "./scenes/form/ProfileForm";
+import axios from "axios";
 
 
 function MainLayout() {

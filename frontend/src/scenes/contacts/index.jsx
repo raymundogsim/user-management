@@ -9,8 +9,8 @@ import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import { useEffect } from "react";
-import { getAllUsers } from "features/data/dataApi";
-import { getAllContacts } from "features/data/dataApi";
+import { getAllUsers } from "./features/data/dataApi";
+import { getAllContacts } from "./features/data/dataApi";
 import { useDispatch, useSelector } from "react-redux";
 
 function CustomToolbar() {

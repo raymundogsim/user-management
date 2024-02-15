@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { api_url } from 'features/config';
+import { api_url } from '../../features/config';
 import { clearContacts, clearUsers, setContacts, setErrors, setUsers } from './dataSlice';
-import { getAuthUser } from 'features/auth/authApi';
+import { getAuthUser } from '../../features/auth/authApi';
+
 
 
 export const getAreaOptions = (type, code) => async (dispatch) => {
@@ -98,4 +99,8 @@ export const getInventory = (data) => async (dispatch) => {
         // dispatch(clearInventory());
         return []
     }
+};
+
+export const createInventory = () => async () => {
+
 };

@@ -14,25 +14,25 @@ import { ColorModeContext, tokens } from "../../theme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { mockAreaData } from "data/mockData";
+import { mockAreaData } from "../../data/mockData";
 import { useEffect, useState } from "react";
-import { getAreaOptions } from "features/data/dataApi";
-import { validateSignupData } from "utils/validators";
+import { getAreaOptions } from "../../features/data/dataApi";
+import { validateSignupData } from "../../utils/validators";
 import { useTheme } from "@mui/material";
-import { signup } from "features/auth/authApi";
-import { authFail } from "features/auth/authSlice";
+import { signup } from "../../features/auth/authApi";
+import { authFail } from "../../features/auth/authSlice";
 import PropTypes from "prop-types";
-import { validateContactData } from "utils/validators";
-import { setErrors } from "features/data/dataSlice";
-import { createContactInformation } from "features/data/dataApi";
-import { SuffixData } from "data/mockData";
-import { GenderData } from "data/mockData";
-import { itemNameData } from "data/mockData";
-import { itemCategoryData } from "data/mockData";
-import { inventoryItemData } from "data/mockData";
-import { inventoryRecordData } from "data/mockData";
-import { businessUnitData } from "data/mockData";
-import { recLossTypeData } from "data/mockData";
+import { validateInventoryData } from "../../utils/validators";
+import { setErrors } from "../../features/data/dataSlice";
+import { createInventory } from "../../features/data/dataApi";
+import { SuffixData } from "../../data/mockData";
+import { GenderData } from "../../data/mockData";
+import { itemNameData } from "../../data/mockData";
+import { itemCategoryData } from "../../data/mockData";
+import { inventoryItemData } from "../../data/mockData";
+import { inventoryRecordData } from "../../data/mockData";
+import { businessUnitData } from "../../data/mockData";
+import { recLossTypeData } from "../../data/mockData";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,6 +65,7 @@ function a11yProps(index) {
 }
 
 const InventoryForm = () => {
+  const inventory = {};
   const theme = useTheme();
   const dispatch = useDispatch();
   const colors = tokens(theme.palette.mode);
@@ -88,14 +89,14 @@ const InventoryForm = () => {
   const handleFormSubmit = (e) => {
     console.log(e, "SUBBMIT");
     e.preventDefault();
-    let { valid, errors: newErrors } = validateContactData(inventory);
+    let { valid, errors: newErrors } = validateInventoryData({inventory});
     console.log(inventory, user, newErrors, "CLICKED");
     if (!valid) {
       dispatch(authFail({ errors: newErrors }));
       return;
     }
 
-    dispatch(createInventory(inventory)).then((res) => {
+    dispatch(createInventory({inventory})).then((res) => {
       if (res) {
         setCreated(true);
       } else {
@@ -105,7 +106,7 @@ const InventoryForm = () => {
   };
 
   const handleChanges = (prop) => (e) => {
-    let newObj = { ...inventories, [prop]: e.target.value };
+    let newObj = { ...inventory, [prop]: e.target.value };
     let oldErrors = { ...errors };
     let { valid, errors: newErrors } = validateInventoryData(newObj);
     if (!valid) {

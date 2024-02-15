@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import SignIn from "scenes/auth/SignIn";
-import Signup from "scenes/auth/Signup";
-import MainLayout from "MainLayout";
-import PrivateRoute from "components/PrivateRoute";
+import SignIn from "./scenes/auth/SignIn";
+import Signup from "./scenes/auth/Signup";
+import MainLayout from "./MainLayout";
+import PrivateRoute from "./components/PrivateRoute";
 import { useDispatch } from "react-redux";
-import { getAuthUser } from "features/auth/authApi";
+import { getAuthUser } from "./features/auth/authApi";
 import axios from "axios";
 
 

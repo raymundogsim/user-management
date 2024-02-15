@@ -3,23 +3,23 @@ import { ColorModeContext, tokens } from "../../theme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { mockAreaData } from "data/mockData";
+import { mockAreaData } from "../../data/mockData";
 import { useEffect, useState } from "react";
-import { getAreaOptions } from "features/data/dataApi";
-import { validateSignupData } from "utils/validators";
+import { getAreaOptions } from "../../features/data/dataApi";
+import { validateSignupData } from "../../utils/validators";
 import { useTheme } from "@mui/material";
-import { signup } from "features/auth/authApi";
-import { authFail } from "features/auth/authSlice";
+import { signup } from "../../features/auth/authApi";
+import { authFail } from "../../features/auth/authSlice";
 import PropTypes from 'prop-types';
-import { validateContactData } from "utils/validators";
-import { setErrors } from "features/data/dataSlice";
-import { createContactInformation } from "features/data/dataApi";
-import { SuffixData } from "data/mockData";
-import { GenderData } from "data/mockData";
-import { CivilStatusData } from "data/mockData";
-import { getAuthUser } from "features/auth/authApi";
-import { updateContactDetails } from "features/data/dataApi";
-import { updateUser } from "features/auth/authApi";
+import { validateContactData } from "../../utils/validators";
+import { setErrors } from "../../features/data/dataSlice";
+import { createContactInformation } from "../../features/data/dataApi";
+import { SuffixData } from "../../data/mockData";
+import { GenderData } from "../../data/mockData";
+import { CivilStatusData } from "../../data/mockData";
+import { getAuthUser } from "../../features/auth/authApi";
+import { updateContactDetails } from "../../features/data/dataApi";
+import { updateUser } from "../../features/auth/authApi";
 
 
 function CustomTabPanel(props) {

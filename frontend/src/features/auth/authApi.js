@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { authStart, authSuccess, authFail, logout } from './authSlice';
-import { api_url } from 'features/config';
+import { api_url } from "../config";
 
 
 export const signup = (userData) => async (dispatch) => {

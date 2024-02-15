@@ -7,7 +7,7 @@ import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from "features/data/dataApi";
+import { getAllUsers } from "../../features/data/dataApi";
 
 const Team = () => {
   const dispatch = useDispatch();

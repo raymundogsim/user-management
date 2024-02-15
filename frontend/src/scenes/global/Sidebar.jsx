@@ -14,8 +14,9 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "features/auth/authSlice";
-import { logoutUser } from "features/auth/authApi";
+import { logout } from "../../features/auth/authApi";
+import { logoutUser } from "../../features/auth/authApi";
+
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
