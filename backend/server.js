@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const userRoutes = require('./routes/userRoutes');
 const contactInformationRoutes = require('./routes/contactInformationRoutes');
+const inventoryRoutes = require('./routes/inventoryRoutes')
 const areaRoutes = require('./routes/areaRoutes');
 const sequelize = require('./utils/database');
 const cors = require('cors');
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use('/api/user', userRoutes);
 app.use('/api/contact-information', contactInformationRoutes);
+app.use('/api/inventory', inventoryRoutes);
 app.use('/api/area', areaRoutes);
 
 sequelize.sync({

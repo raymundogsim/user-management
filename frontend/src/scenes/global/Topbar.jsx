@@ -108,7 +108,6 @@ const Topbar = (props) => {
     }, [profile])
     
 
-console.log(profile, 'PROFILE')
   
   return (
   <div>
@@ -138,7 +137,7 @@ console.log(profile, 'PROFILE')
           <Typography
             color={colors.grey[100]}
           variant="h6" noWrap component="div" flexGrow={1}>
-           DIS3CT
+           CITRUS QUENCHERS INVENTORY
           </Typography>
      {/* <Box
         display="flex"

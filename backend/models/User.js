@@ -27,6 +27,10 @@ const User = sequelize.define('User', {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  businessId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
   isSuper: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

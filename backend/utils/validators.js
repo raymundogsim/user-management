@@ -80,9 +80,24 @@ const validateContactData = (data) => {
 };
 
 
+const validateInventoryData = (data) => {
+    let errors = {};
+
+    if (isEmpty(data.itemName)) errors.itemName = 'Item Name must be empty';
+    if (isEmpty(data.itemDesc)) errors.itemDesc = 'Item Description must be empty';
+    if (isEmpty(data.itemCategory)) errors.itemCategory = 'itemCategory must be empty';
+    if (isEmpty(data.businessUnitName)) errors.businessUnitName = 'BusinessUnit must be empty';
+    console.log(data, "validatorForInventory")
+    return {
+        errors,
+        valid: Object.keys(errors).length === 0 ? true : false,
+    };
+};
+
 
 module.exports = {
     validateSignupData,
     validateLoginData,
-    validateContactData
+    validateContactData,
+    validateInventoryData
 }

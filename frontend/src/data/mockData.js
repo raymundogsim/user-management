@@ -1343,3 +1343,253 @@ export const CivilStatusData = [
     label: "Legally Separated"
   }
 ]
+
+
+
+export const itemNameData = [
+  {
+    value: 'Cups 22oz',
+    label: 'Cups 22oz'
+  },
+  {
+    value: 'Strawberry(pack)',
+    label: 'Strawberry(pack)'
+  },
+  {
+    value: 'Blueberry(pack)',
+    label: 'Blueberry(pack)'
+  },
+  {
+    value: 'Sugar Syrup(Liter)',
+    label: 'Sugar Syrup(Liter)'
+  },
+  {
+    value: 'Sugar Syrup(Gallon)',
+    label: 'Sugar Syrup(Gallon)'
+  },
+  {
+    value: 'Sugar Syrup(Jug)',
+    label: 'Sugar Syrup(Jug)'
+  },
+  {
+    value: 'Lemon Fruit',
+    label: 'Lemon Fruit'
+  },
+  {
+    value: 'Orange Fruit',
+    label: 'Orange Fruit'
+  },
+  {
+    value: 'Cucumber Fruit(Kilos)',
+    label: 'Cucumber Fruit(Kilos)'
+  },
+  {
+    value: 'Cucumber Fruit(Scoops)',
+    label: 'Cucumber Fruit(Scoops)'
+  },
+  {
+    value: 'Ginger(Pack)',
+    label: 'Ginger(Pack)'
+  },
+  {
+    value: 'Chia Seeds(Pack)',
+    label: 'Chia Seeds(Pack)'
+  },
+  {
+    value: 'Charcoal(Pack)',
+    label: 'Charcoal(Pack)'
+  },
+  {
+    value: 'Yakult',
+    label: 'Yakult'
+  },
+  {
+    value: 'Buns',
+    label: 'Buns'
+  },
+  {
+    value: 'Tuna',
+    label: 'Tuna'
+  },
+  {
+    value: 'Margarine',
+    label: 'Margarine'
+  },
+  {
+    value: 'Cheese',
+    label: 'Cheese'
+  }
+]
+
+export const itemCategoryData = [
+  {
+    value: 'fruit',
+    label: 'Fruit'
+  },
+  {
+    value: 'flavor',
+    label: 'Flavor'
+  },
+  {
+    value: 'food',
+    label: 'Food'
+  },
+  {
+    value: 'add-on',
+    label: 'add-on'
+  },
+  {
+    value: 'packaging',
+    label: 'Packaging'
+  },
+  {
+    value: 'supply',
+    label: 'Supply'
+  }, 
+]
+
+export const recLossTypeData = [
+  {
+    value: 'damaged',
+    label: 'damaged'
+  },
+  {
+    value: 'variance',
+    label: 'variance'
+  }
+]
+
+
+export const inventoryRecordData = [
+  {
+    id: '1',
+    itemName: 'Cups 22oz',
+    itemDesc: 'With Printed Label',
+    itemCategory: 'Packaging',
+    recSold: '140',
+    recPurchased: 0,
+    recTransferred: '20',
+    recToBranch: 'SVMOR',
+    recLoss: '3',
+    recLossType: 'Damage',
+    createdBy: 'Daphne Roa',
+    isDeleted: false,
+    BusinessId: 'METRO' 
+  },
+  {
+    id: '2',
+    itemName: 'Lemon Fruit',
+    itemDesc: 'Packed by piece',
+    itemCategory: 'fruit',
+    recSold: 150,
+    recPurchased: 0,
+    recTransferred: 50,
+    recToBranch: 'SVMOR',
+    recLoss: 1,
+    recLossType: 'damage',
+    createdBy: 'Shenna Nablo',
+    isDeleted: false,
+    BusinessId: 'METRO' 
+  },
+  {
+    id: '3',
+    itemName: 'Orange Fruit',
+    itemDesc: 'Packed by piece',
+    itemCategory: 'fruit',
+    recSold: 40,
+    recPurchased: 0,
+    recTransferred: 0,
+    recToBranch: '',
+    recLoss: 3,
+    recLossType: 'damage',
+    createdBy: 'Shenna Nablo',
+    isDeleted: false,
+    BusinessId: 'METRO' 
+  },
+  {
+    id: '4',
+    itemName: 'Cups 22oz',
+    itemDesc: 'With Printed Label',
+    itemCategory: 'packaging',
+    recSold: 0,
+    recPurchased: 0,
+    recTransferred: 2000,
+    recToBranch: 'WARES',
+    recLoss: 0,
+    recLossType: 'damage',
+    createdBy: 'Shenna Nablo',
+    isDeleted: false,
+    BusinessId: 'WARES' 
+  },
+]
+
+export const inventoryItemData = [
+  {
+    id: '1',
+    itemName: 'Cups 22oz',
+    itemDesc: 'With Printed Label',
+    itemCategory: 'Packaging',
+    sumSold: '2000',
+    sumTransferred: '2500',
+    sumLoss: '30',
+    netCount: '6000',
+    isDeleted: false,
+  },
+  {
+    id: '2',
+    itemName: 'Lemon Fruit',
+    itemDesc: 'Packed per piece',
+    itemCategory: 'fruit',
+    sumSold: '200',
+    sumTransferred: '500',
+    sumLoss: '30',
+    netCount: '650',
+    isDeleted: false,
+  },
+]
+
+export const businessUnitData = [
+  {
+    businessUnitName: 'Tolosa Warehouse',
+    businessId: 'WARES',
+    businessUnitType: 'Warehouse',
+    value: 'Tolosa Warehouse',
+    label: 'Warehouse',
+  },
+  {
+    businessUnitName: 'Metro Branch',
+    businessId: 'METRO',
+    businessUnitType: 'Branch',
+    value: 'Metro Branch',
+    label: 'Branch',
+  },
+  {
+    businessUnitName: 'Savemore Branch',
+    businessId: 'SVMOR',
+    businessUnitType: 'Branch',
+    value: 'Savemore Branch',
+    label: 'Branch',
+  },
+  {
+    businessUnitName: 'Robinsons Marasbaras Branch',
+    businessId: 'ROBMR',
+    businessUnitType: 'Branch',
+    value: 'Robinsons Marasbaras Branch',
+    label: 'Branch',
+  },
+  {
+    businessUnitName: 'Robinsons North Branch',
+    businessId: 'ROBNT',
+    businessUnitType: 'Branch',
+    value: 'Robinsons North Branch',
+    label: 'Branch',
+  },
+  {
+    businessUnitName: 'RTRMF Branch',
+    businessId: 'RTRMF',
+    businessUnitType: 'Branch',
+    value: 'RTRMF Branch',
+    label: 'Branch',
+  }
+]
+

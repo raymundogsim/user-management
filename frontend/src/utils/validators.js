@@ -76,3 +76,18 @@ export const validateContactData = (data) => {
         valid: Object.keys(errors).length === 0 ? true : false
     };
 };
+
+
+export const validateInventoryData = (data) => {
+    let errors = {};
+
+    if (isEmpty(data.itemName)) errors.itemName = 'Item Name must be empty';
+    if (isEmpty(data.itemDesc)) errors.itemDesc = 'Item Description must be empty';
+    if (isEmpty(data.itemCategory)) errors.itemCategory = 'Item Category must be empty';
+    if (isEmpty(data.businessUnitName)) errors.businessUnitName = 'Unit/Branch must be empty';
+        console.log(errors)
+    return {
+        errors,
+        valid: Object.keys(errors).length === 0 ? true : false
+    };
+};

@@ -4,9 +4,9 @@ import Topbar from "./scenes/global/Topbar";
 import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
-import Contacts from "./scenes/contacts";
+import Inventory from "./scenes/inventory";
 import UserForm from "./scenes/form/UserForm";
-import ContactForm from "./scenes/form/ContactForm";
+import InventoryForm from "./scenes/form/InventoryForm";
 import FAQ from "./scenes/faq";
 import Calendar from "./scenes/calendar/calendar";
 import axios from 'axios';
@@ -50,10 +50,10 @@ function MainLayout() {
                     <Routes>
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/team" element={<Team />} />
-                        <Route path="/contacts" element={<Contacts />} />
+                        <Route path="/inventory" element={<Inventory />} />
                         <Route path="/invoices" element={<Invoices />} />
                         <Route path="/user-form" element={<UserForm />} />
-                        <Route path="/contact-form" element={<ContactForm />} />
+                        <Route path="/inventory-form" element={<InventoryForm />} />
                         <Route path="/profile" element={<ProfileForm />} />
                         <Route path="/faq" element={<FAQ />} />
                         <Route path="/calendar" element={<Calendar />} />

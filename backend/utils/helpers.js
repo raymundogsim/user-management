@@ -9,9 +9,6 @@ const objectToArray = (obj) => {
   // }
 
 
-
-
-
   return areaCodes;
 }
 

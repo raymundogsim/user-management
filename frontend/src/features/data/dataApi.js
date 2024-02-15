@@ -85,3 +85,17 @@ export const getAllContacts = (data) => async (dispatch) => {
         return []
     }
 };
+
+export const getInventory = (data) => async (dispatch) => {
+    try {
+        
+        const response = await axios.get(api_url + `/inventory/get`);
+        console.log(response.data, 'inventories')
+        // dispatch(setInventory(response.data));
+        return response.data;
+    } catch (error) {
+        console.log(error)
+        // dispatch(clearInventory());
+        return []
+    }
+};

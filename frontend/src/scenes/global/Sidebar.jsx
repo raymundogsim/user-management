@@ -4,11 +4,12 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import WarehouseIcon from '@mui/icons-material/Warehouse';
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
@@ -54,17 +55,22 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
   
   
 
-  let coordPos = user.userLevel === 'regCode' ? 'Regional Leader' : user.userLevel === 'provCode' ? 'Provincial Leader' : user.userLevel === 'citymunCode' ? 'City/Municipality Leader' : 'Barangay Leader';
+  let coordPos = user.userLevel === 'regCode' ? 'Proprietor' : user.userLevel === 'provCode' ? 'Inventory Controller' : user.userLevel === 'Admin Staff' ? 'City/Municipality Leader' : 'Crew';
   let coordArea = profile ? (user.userLevel === 'regCode' ? `${profile.regDesc}` : user.userLevel === 'provCode' ? `${profile.provDesc}` : user.userLevel === 'citymunCode' ? `${profile.citymunDesc}, ${profile.provDesc}` : `${profile.brgyDesc}, ${profile.citymunDesc}`) : '';
 
-  console.log(user, 'USER')
   
+
+
   return (
     <Box
       sx={{
         overflowX: 'hidden',
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: "93vh",
+          width: "100%"
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -85,7 +91,7 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
           {/* LOGO AND MENU ICON */}
 
           {!isCollapsed && (
-            <Box mb="25px">
+            <Box mb="50px">
             {profile && 
             <>
               <Box display="flex" justifyContent="center" alignItems="center">
@@ -110,7 +116,7 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
                  {coordPos}
                 </Typography>
                 <Typography variant="caption" color={colors.greenAccent[200]}>
-                 {coordArea}
+                 {/* {coordArea} */}
                 </Typography>
               </Box>
               </>              } 
@@ -118,20 +124,22 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+
             <Item
               disabled
-              title="Dashboard"
+              title="Admin Dashboard"
               to="/dashboard"
-              icon={<HomeOutlinedIcon />}
+              icon={<DashboardIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-
+       
             <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
+
               Data
             </Typography>
             {user.userLevel != 'brgyCode' && 
@@ -144,13 +152,13 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
             />
             }
             <Item
-              title="Contacts Information"
-              to="/dashboard/contacts"
-              icon={<ContactsOutlinedIcon />}
+              title="Inventory Record"
+              to="/dashboard/inventory"
+              icon={<WarehouseIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-        {/*     <Item
+        {/*   <Item
               title="Invoices Balances"
               to="/dashboard/invoices"
               icon={<ReceiptOutlinedIcon />}
@@ -163,7 +171,8 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Pages
+
+              Forms
             </Typography>
             {user.userLevel != 'brgyCode' && 
             <Item
@@ -174,13 +183,20 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
               setSelected={setSelected}
             />}
             <Item
+              title="Inventory Form"
+              to="/dashboard/inventory-form"
+              icon={<PostAddIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+           {/* <Item
               title="Contact Form"
               to="/dashboard/contact-form"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
-            <Item
+            /> */}
+            {/* <Item
               title="Calendar"
               to="/dashboard/calendar"
               icon={<CalendarTodayOutlinedIcon />}
@@ -193,20 +209,21 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
                 <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Exit
+
+            Exit
             </Typography>
-          <Item
+            <Item
               title="Logout"
               icon={<ExitToAppIcon />}
               setSelected={handleLogout}
             />
-         
+
           </Box>
         </Menu>
       </ProSidebar>
