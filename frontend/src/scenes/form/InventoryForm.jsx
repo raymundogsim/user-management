@@ -23,7 +23,7 @@ import { signup } from "../../features/auth/authApi";
 import { authFail } from "../../features/auth/authSlice";
 import PropTypes from "prop-types";
 import { validateInventoryData } from "../../utils/validators";
-import { setErrors } from "../../features/data/dataSlice";
+import { setErrors, setInventories } from "../../features/data/dataSlice";
 import { createInventory } from "../../features/data/dataApi";
 import { SuffixData } from "../../data/mockData";
 import { GenderData } from "../../data/mockData";
@@ -89,7 +89,7 @@ const InventoryForm = () => {
   const handleFormSubmit = (e) => {
     console.log(e, "SUBBMIT");
     e.preventDefault();
-    let { valid, errors: newErrors } = validateInventoryData({inventory});
+    let { valid, errors: newErrors } = validateInventoryData(inventory);
     console.log(inventory, user, newErrors, "CLICKED");
     if (!valid) {
       dispatch(authFail({ errors: newErrors }));
@@ -120,7 +120,7 @@ const InventoryForm = () => {
 
     dispatch(setErrors(oldErrors));
 
-    setContactData(newObj);
+    setInventories(newObj);
   };
 
   const handleArea = (areaType, val) => {
@@ -366,12 +366,6 @@ const InventoryForm = () => {
                     error={errors.rectransferred}
                     helperText={errors.rectransferred && errors.rectransferred}
                   >
-                    {/* {rectransferredData.map((option, index) => (
-            <MenuItem key={option.value + index} value={option.value}
-            >
-              {option.label}
-            </MenuItem>
-          ))} */}
                   </TextField>
                 </Grid>
 

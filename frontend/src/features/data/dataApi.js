@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { api_url } from '../../features/config';
-import { clearContacts, clearUsers, setContacts, setErrors, setUsers } from './dataSlice';
+import { clearContacts, clearUsers, clearInventories, setContacts, setErrors, setUsers, setInventories } from './dataSlice';
 import { getAuthUser } from '../../features/auth/authApi';
 
 
@@ -89,18 +89,26 @@ export const getAllContacts = (data) => async (dispatch) => {
 
 export const getInventory = (data) => async (dispatch) => {
     try {
-        
         const response = await axios.get(api_url + `/inventory/get`);
         console.log(response.data, 'inventories')
-        // dispatch(setInventory(response.data));
+        dispatch(setInventories(response.data));
         return response.data;
     } catch (error) {
         console.log(error)
-        // dispatch(clearInventory());
+        dispatch(clearInventories());
         return []
     }
 };
 
-export const createInventory = () => async () => {
-
+export const createInventory = (data) => async (dispatch) => {
+try {
+    const response = await axios.post(api_url + `/inventory/create`, data);
+    console.log(response.data, 'areas')
+    dispatch(setInventories(response.data));
+    return response.data;
+} catch (error) {
+    console.log(error)
+    dispatch(clearInventories());
+    return []
+}
 };

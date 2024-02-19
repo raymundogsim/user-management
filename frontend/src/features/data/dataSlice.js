@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     users: [],
     contacts: [],
-    errors: {}
+    errors: {},
+    inventories: []
 };
 
 const authSlice = createSlice({
@@ -15,6 +16,12 @@ const authSlice = createSlice({
         },
         clearUsers(state, action) {
             state.users = []
+        },
+        setInventories(state, action) {
+            state.inventories = action.payload;
+        },
+        clearInventories(state, action) {
+            state.inventories = []
         },
         setContacts(state, action) {
             state.contacts = action.payload;
@@ -31,6 +38,6 @@ const authSlice = createSlice({
     },
 });
 
-export const { setUsers, clearUsers, setContacts, clearContacts, setErrors, clearErrors } = authSlice.actions;
+export const { setUsers, clearUsers, setInventories, clearInventories, setContacts, clearContacts, setErrors, clearErrors } = authSlice.actions;
 
 export default authSlice.reducer;

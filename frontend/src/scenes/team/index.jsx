@@ -11,7 +11,7 @@ import { getAllUsers } from "../../features/data/dataApi";
 
 const Team = () => {
   const dispatch = useDispatch();
-  const {users } = useSelector(({data}) => data)
+  const { users } = useSelector(({data}) => data)
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [

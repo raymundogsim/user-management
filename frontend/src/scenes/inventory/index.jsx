@@ -10,9 +10,7 @@ import { useTheme } from "@mui/material";
 import { useEffect } from "react";
 import { getInventory } from "../../features/data/dataApi";
 import { useDispatch, useSelector } from "react-redux";
-import { inventoryRecordData } from "../../data/mockData";
 import { api_url } from "../../features/config";
-import axios from "axios";
 
 
 function CustomToolbar() {
@@ -30,7 +28,7 @@ function CustomToolbar() {
 const Inventory = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { inventory } = useSelector(({data}) => data)
+  const { inventories } = useSelector(({data}) => data)
   const colors = tokens(theme.palette.mode);
 
   const columns = [
@@ -111,10 +109,12 @@ const Inventory = () => {
 
 
   const handleGetInventory = async () => {
-    const {inventory} = await (api_url + `/inventory/get`)
     dispatch(getInventory())
     .then(res => {
       console.log(res, 'inventory data')
+    })
+    .catch(err => {
+      console.log(err)
     })
   }
   
@@ -163,11 +163,12 @@ const Inventory = () => {
             color: `${colors.grey[100]} !important`,
           }
 
+
         }}
       >
         <DataGrid
           checkboxSelection
-          rows={inventoryRecordData}
+          rows={inventories}
           columns={columns}
           components={{ Toolbar: CustomToolbar }}
         />
