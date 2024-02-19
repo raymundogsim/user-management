@@ -6,6 +6,7 @@ const userRoutes = require('./routes/userRoutes');
 const contactInformationRoutes = require('./routes/contactInformationRoutes');
 const inventoryRoutes = require('./routes/inventoryRoutes')
 const areaRoutes = require('./routes/areaRoutes');
+const entityRoutes = require('./routes/entityRoutes');
 const sequelize = require('./utils/database');
 const cors = require('cors');
 const PORT = process.env.PORT || 4001;
@@ -18,6 +19,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/contact-information', contactInformationRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/area', areaRoutes);
+app.use('/api/entity', entityRoutes);
 
 sequelize.sync({
     // force: true
