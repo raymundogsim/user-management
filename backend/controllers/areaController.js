@@ -12,7 +12,6 @@ exports.getAreaData = async (req, res) => {
   }
 };
 
-
 exports.getRegions = async (req, res) => {
   try {
     const regions = await RefRegion.findAll();
