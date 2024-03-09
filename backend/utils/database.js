@@ -9,7 +9,7 @@ const sequelize = new Sequelize({
   port: 3306, // Change this to your MySQL port
   username: 'root', // Change this to your MySQL username
   password: '', // Change this to your MySQL password
-  database: 'district_test', // Change this to your MySQL database name
+  database: 'inventory_test', // Change this to your MySQL database name
 });
 
 // Test database connection
